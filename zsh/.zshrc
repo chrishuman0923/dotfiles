@@ -15,7 +15,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 export HOMEBREW_NO_ANALYTICS=1
 # Hardcoded for performance (avoid running brew --prefix on every shell init)
 export HOMEBREW_PREFIX="/opt/homebrew"
-export NVM_AUTO_USE="true"
+# Auto-accept corepack downloads (pnpm, yarn)
+export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 
 # Download zinit, if it's not already present
 if [ ! -d $ZINIT_HOME ]; then
@@ -34,7 +35,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-zinit light lukechilds/zsh-nvm
 
 # Add in snippets
 zinit snippet OMZP::wd
@@ -84,6 +84,14 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers -
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+# fnm (Fast Node Manager) with auto-install on cd
+eval "$(fnm env --resolve-engines --version-file-strategy=recursive --corepack-enabled)"
+_fnm_autoload_hook() {
+  if [[ -f .nvmrc || -f .node-version ]]; then
+    fnm use --install-if-missing --silent-if-unchanged 2>/dev/null
+  fi
+}
+add-zsh-hook chpwd _fnm_autoload_hook
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

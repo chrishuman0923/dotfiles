@@ -16,9 +16,8 @@ dotfiles/
 ├── git/           # Git configuration
 │   ├── .gitconfig
 │   └── .gitmessage
-├── npm/           # NPM configuration
-│   └── .npmrc
-└── backups/       # Backup of original configs before migration
+└── npm/           # NPM configuration
+    └── .npmrc
 ```
 
 ## Installation
@@ -35,21 +34,27 @@ dotfiles/
 git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles
 
 # Install dependencies
-brew install stow
+brew install stow fnm eza bat fd zoxide fzf
 
 # Create symlinks (from dotfiles directory)
 cd ~/projects/dotfiles
 stow -t ~ zsh git npm
+
+# Install Node (fnm will auto-switch per project via .nvmrc)
+fnm install 22
+fnm default 22
+
+# Enable corepack for pnpm/yarn management
+npm install -g corepack
+corepack enable
 ```
 
 ### Install Individual Packages
 
 ```bash
-# Only zsh config
-stow -t ~ zsh
-
-# Only git config
-stow -t ~ git
+stow -t ~ zsh      # Only zsh config
+stow -t ~ git      # Only git config
+stow -t ~ npm      # Only npm config
 ```
 
 ### Uninstall (remove symlinks)
@@ -59,26 +64,47 @@ cd ~/projects/dotfiles
 stow -D -t ~ zsh git npm
 ```
 
-## Dependencies
+## Features
 
-These tools are expected to be installed:
+### Node Version Management (fnm)
 
-```bash
-# Shell and prompt
-brew install zinit  # Or install manually per .zshrc
+- **Auto-switch**: `cd` into a folder with `.nvmrc` → automatically switches (and installs if missing)
+- **Fast**: Written in Rust, ~40x faster than nvm
+- **Corepack enabled**: pnpm/yarn versions managed per-project via `package.json`
 
-# Modern CLI tools (aliased in .zshrc)
-brew install eza bat fd zoxide fzf
-
-# Optional
-brew install ripgrep
+```json
+// package.json - corepack will auto-download this version
+"packageManager": "pnpm@9.15.0"
 ```
+
+### Modern CLI Tools
+
+| Command                | Tool   | Description                      |
+| ---------------------- | ------ | -------------------------------- |
+| `ls`, `ll`, `la`, `lt` | eza    | Better ls with icons, git status |
+| `cat`, `catp`          | bat    | Syntax-highlighted file viewing  |
+| `find`                 | fd     | Faster, simpler find             |
+| `z <path>`             | zoxide | Smart cd that learns your habits |
+
+### pnpm Aliases
+
+| Alias | Command        |
+| ----- | -------------- |
+| `p`   | `pnpm`         |
+| `pi`  | `pnpm install` |
+| `pa`  | `pnpm add`     |
+| `pad` | `pnpm add -D`  |
+| `px`  | `pnpm dlx`     |
+| `pd`  | `pnpm dev`     |
+| `pb`  | `pnpm build`   |
+| `pt`  | `pnpm test`    |
 
 ## Secrets
 
 Secrets are stored in `~/.secrets` which is:
+
 - Sourced by `.zshenv`
-- **NOT tracked in git** (listed in `.gitignore`)
+- **NOT tracked in git**
 
 To set up secrets on a new machine:
 
@@ -93,7 +119,3 @@ chmod 600 ~/.secrets
 - **Shell aliases**: Edit `zsh/.zsh_custom_aliases`
 - **Shell functions**: Edit `zsh/.zsh_custom_functions`
 - **Prompt theme**: Run `p10k configure` or edit `zsh/.p10k.zsh`
-
-## Backups
-
-Original config files before migration are stored in `backups/` with ISO8601 timestamps.

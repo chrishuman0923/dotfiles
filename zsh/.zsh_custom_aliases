@@ -10,6 +10,18 @@ alias cat="bat --paging=never"
 alias catp="bat"  # cat with pager
 alias find="fd"
 
+# pnpm (managed via Corepack)
+alias p="pnpm"
+alias pi="pnpm install"
+alias pa="pnpm add"
+alias pad="pnpm add -D"
+alias prm="pnpm remove"
+alias px="pnpm dlx"
+alias pd="pnpm dev"
+alias pb="pnpm build"
+alias pt="pnpm test"
+alias pex="pnpm exec"
+
 # AWS
 alias aws-unset='assume --unset'
 alias aws-creds='aws configure export-credentials --format env'

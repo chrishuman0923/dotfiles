@@ -4,9 +4,6 @@
 .env
 .env.*
 
-# Backup folder (contains original configs with secrets)
-backups/
-
 # OS files
 .DS_Store
 *~
