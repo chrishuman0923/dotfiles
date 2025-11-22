@@ -38,19 +38,37 @@ if [[ ! -f "$DOTFILES_DIR/zsh/.secrets" ]]; then
   echo "# Add your secrets here" > "$DOTFILES_DIR/zsh/.secrets"
 fi
 
-# Remove existing dotfiles that would conflict with stow
+# Check for existing dotfiles that would conflict with stow
 echo "🔗 Preparing symlinks..."
 DOTFILES=(
   ".zshrc" ".zshenv" ".zprofile" ".p10k.zsh"
   ".zsh_custom_aliases" ".zsh_custom_functions" ".secrets"
   ".gitconfig" ".gitmessage" ".npmrc"
 )
+
+# Find conflicting files
+CONFLICTS=()
 for file in "${DOTFILES[@]}"; do
   if [[ -f "$HOME/$file" && ! -L "$HOME/$file" ]]; then
-    echo "  Backing up existing $file"
-    mv "$HOME/$file" "$HOME/$file.backup"
+    CONFLICTS+=("$file")
   fi
 done
+
+# Handle conflicts if any exist
+if [[ ${#CONFLICTS[@]} -gt 0 ]]; then
+  echo "  Found existing config files: ${CONFLICTS[*]}"
+  read -p "  Backup these files before replacing? (y/n): " BACKUP_CHOICE
+
+  for file in "${CONFLICTS[@]}"; do
+    if [[ "$BACKUP_CHOICE" =~ ^[Yy]$ ]]; then
+      echo "    Backing up $file"
+      mv "$HOME/$file" "$HOME/$file.backup"
+    else
+      echo "    Removing $file"
+      rm "$HOME/$file"
+    fi
+  done
+fi
 
 # Run stow
 echo "🔗 Creating symlinks..."
@@ -59,12 +77,14 @@ stow -t ~ zsh git npm
 # Setup fnm and Node
 echo "📦 Setting up Node.js..."
 eval "$(fnm env)"
-fnm install 22
-fnm default 22
+fnm install --lts
+fnm default lts-latest
 
-# Enable corepack
+# Enable corepack (install if not bundled with Node)
 echo "📦 Enabling corepack..."
-npm install -g corepack
+if ! command -v corepack &> /dev/null; then
+  npm install -g corepack
+fi
 corepack enable
 
 echo ""

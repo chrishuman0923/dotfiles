@@ -39,7 +39,7 @@ The bootstrap script will:
 - Install Homebrew (if needed)
 - Install all dependencies (stow, fnm, eza, bat, fd, zoxide, fzf, git-delta, lazygit)
 - Create symlinks for all dotfiles
-- Set up Node.js via fnm
+- Set up Node.js (latest LTS) via fnm
 - Enable corepack for pnpm/yarn
 
 ### Manual Installation
@@ -55,9 +55,9 @@ brew install stow fnm eza bat fd zoxide fzf git-delta lazygit
 cd ~/projects/dotfiles
 stow -t ~ zsh git npm
 
-# Setup Node
-fnm install 22 && fnm default 22
-npm install -g corepack && corepack enable
+# Setup Node (latest LTS)
+fnm install --lts && fnm default lts-latest
+corepack enable
 ```
 
 ### Uninstall (remove symlinks)
