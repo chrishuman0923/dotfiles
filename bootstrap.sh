@@ -70,6 +70,8 @@ corepack enable
 # Configure macOS settings
 echo "🖥️  Configuring macOS settings..."
 "$DOTFILES_DIR/macos/dock.sh"
+"$DOTFILES_DIR/macos/finder.sh"
+"$DOTFILES_DIR/macos/keyboard.sh"
 
 # Configure apps
 echo "🔧 Configuring apps..."
