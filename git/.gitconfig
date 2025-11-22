@@ -7,6 +7,14 @@
 	rebase = false
 [core]
 	editor = cursor -w
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
+	line-numbers = true
+	side-by-side = false
 [diff]
 	tool = cursor
 [difftool "cursor"]
