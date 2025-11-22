@@ -26,9 +26,23 @@ dotfiles/
 ### Prerequisites
 
 - macOS (Apple Silicon)
-- [Homebrew](https://brew.sh)
+- Git and SSH key configured for GitHub
 
-### Quick Start
+### Quick Start (New Machine)
+
+```bash
+# One-liner to bootstrap everything
+git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles && ~/projects/dotfiles/bootstrap.sh
+```
+
+The bootstrap script will:
+- Install Homebrew (if needed)
+- Install all dependencies (stow, fnm, eza, bat, fd, zoxide, fzf, git-delta, lazygit)
+- Create symlinks for all dotfiles
+- Set up Node.js via fnm
+- Enable corepack for pnpm/yarn
+
+### Manual Installation
 
 ```bash
 # Clone the repo
@@ -37,25 +51,13 @@ git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles
 # Install dependencies
 brew install stow fnm eza bat fd zoxide fzf git-delta lazygit
 
-# Create symlinks (from dotfiles directory)
+# Create symlinks
 cd ~/projects/dotfiles
 stow -t ~ zsh git npm
 
-# Install Node (fnm will auto-switch per project via .nvmrc)
-fnm install 22
-fnm default 22
-
-# Enable corepack for pnpm/yarn management
-npm install -g corepack
-corepack enable
-```
-
-### Install Individual Packages
-
-```bash
-stow -t ~ zsh      # Only zsh config
-stow -t ~ git      # Only git config
-stow -t ~ npm      # Only npm config
+# Setup Node
+fnm install 22 && fnm default 22
+npm install -g corepack && corepack enable
 ```
 
 ### Uninstall (remove symlinks)
