@@ -9,6 +9,8 @@ if [[ "$(uname)" != "Darwin" ]]; then
   exit 1
 fi
 
+DOTFILES_DIR="$HOME/projects/dotfiles"
+
 # Install Homebrew if not present
 if ! command -v brew &> /dev/null; then
   echo "📦 Installing Homebrew..."
@@ -16,12 +18,7 @@ if ! command -v brew &> /dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Install dependencies
-echo "📦 Installing dependencies..."
-brew install stow fnm eza bat fd zoxide fzf git-delta lazygit
-
 # Clone dotfiles if not in the right place
-DOTFILES_DIR="$HOME/projects/dotfiles"
 if [[ ! -d "$DOTFILES_DIR" ]]; then
   echo "📁 Cloning dotfiles..."
   mkdir -p "$HOME/projects"
@@ -29,6 +26,10 @@ if [[ ! -d "$DOTFILES_DIR" ]]; then
 fi
 
 cd "$DOTFILES_DIR"
+
+# Install dependencies via Brewfile
+echo "📦 Installing apps and tools from Brewfile..."
+brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 # Create secrets file if it doesn't exist
 if [[ ! -f "$DOTFILES_DIR/zsh/.secrets" ]]; then

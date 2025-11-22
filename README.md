@@ -17,8 +17,10 @@ dotfiles/
 ├── git/           # Git configuration
 │   ├── .gitconfig
 │   └── .gitmessage
-└── npm/           # NPM configuration
-    └── .npmrc
+├── npm/           # NPM configuration
+│   └── .npmrc
+├── Brewfile       # Homebrew dependencies (CLI tools, apps, VS Code extensions)
+└── bootstrap.sh   # New machine setup script
 ```
 
 ## Installation
@@ -37,8 +39,9 @@ git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles && ~/pr
 
 The bootstrap script will:
 - Install Homebrew (if needed)
-- Install all dependencies (stow, fnm, eza, bat, fd, zoxide, fzf, git-delta, lazygit)
-- Create symlinks for all dotfiles
+- Install all dependencies from Brewfile (CLI tools, apps, VS Code extensions)
+- Prompt to backup or remove any conflicting config files
+- Create symlinks for all dotfiles via stow
 - Set up Node.js (latest LTS) via fnm
 - Enable corepack for pnpm/yarn
 
@@ -47,15 +50,16 @@ The bootstrap script will:
 ```bash
 # Clone the repo
 git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles
+cd ~/projects/dotfiles
 
-# Install dependencies
-brew install stow fnm eza bat fd zoxide fzf git-delta lazygit
+# Install all dependencies from Brewfile
+brew bundle
 
 # Create symlinks
-cd ~/projects/dotfiles
 stow -t ~ zsh git npm
 
 # Setup Node (latest LTS)
+eval "$(fnm env)"
 fnm install --lts && fnm default lts-latest
 corepack enable
 ```
@@ -147,3 +151,24 @@ cd ~/projects/dotfiles && stow -R -t ~ zsh
 - **Shell aliases**: Edit `zsh/.zsh_custom_aliases`
 - **Shell functions**: Edit `zsh/.zsh_custom_functions`
 - **Prompt theme**: Run `p10k configure` or edit `zsh/.p10k.zsh`
+
+## Managing Dependencies
+
+The `Brewfile` contains all Homebrew dependencies:
+- CLI tools (bat, eza, fd, fnm, fzf, etc.)
+- Applications (1Password, Cursor, Docker, etc.)
+- VS Code/Cursor extensions
+
+To update the Brewfile after installing new packages:
+
+```bash
+# Generate a new Brewfile from currently installed packages
+brew bundle dump --force --file=~/projects/dotfiles/Brewfile
+```
+
+To install everything from the Brewfile:
+
+```bash
+cd ~/projects/dotfiles
+brew bundle
+```
