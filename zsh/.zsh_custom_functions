@@ -1,0 +1,49 @@
+#!shellscript
+
+# ----------------------
+# Custom functions
+# ----------------------
+
+# Display the public IP address
+myip() {
+  curl http://ipecho.net/plain && echo
+}
+
+## Find apps running on specified port
+## Parameter $1 = port #
+findport() {
+  lsof -n -i4TCP:$1
+}
+
+## Kill process
+## Parameter $1 = PID
+killpid() {
+  kill -9 $1
+}
+
+## Generate pseudo-random string of characters
+generatesecret() {
+  node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+}
+
+## Switch to GLG ngrok
+ngrokglg() {
+  if [ -z "$1" ]; then
+    echo "Usage: ngrokglg <port>"
+    return 1
+  fi
+
+  cp ~/Library/Application\ Support/ngrok/ngrok-glg.yml ~/Library/Application\ Support/ngrok/ngrok.yml
+  ngrok http --url=basically-concise-werewolf.ngrok-free.app $1
+}
+
+## Switch to Bitwise Forge ngrok
+ngrokbf() {
+  if [ -z "$1" ]; then
+    echo "Usage: ngrokbf <port>"
+    return 1
+  fi
+
+  cp ~/Library/Application\ Support/ngrok/ngrok-bf.yml ~/Library/Application\ Support/ngrok/ngrok.yml
+  ngrok http --url=stable-firefly-nominally.ngrok-free.app $1
+}

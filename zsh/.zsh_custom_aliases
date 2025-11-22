@@ -1,0 +1,6 @@
+#!shellscript
+
+# ls alias now defined in .zshrc using eza
+
+alias aws-unset='assume --unset'
+alias aws-creds='aws configure export-credentials --format env'

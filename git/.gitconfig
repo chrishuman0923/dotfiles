@@ -1,0 +1,19 @@
+[user]
+	name = Chris Human
+	email = 42072991+chrishuman0923@users.noreply.github.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[core]
+	editor = cursor -w
+[diff]
+	tool = cursor
+[difftool "cursor"]
+	cmd = "cursor -w --diff  "
+[merge]
+	tool = cursor
+[mergetool "cursor"]
+	cmd = "cursor -w "
+[commit]
+	template = /Users/chuman/.gitmessage
