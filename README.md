@@ -12,7 +12,8 @@ dotfiles/
 │   ├── .zprofile
 │   ├── .p10k.zsh
 │   ├── .zsh_custom_aliases
-│   └── .zsh_custom_functions
+│   ├── .zsh_custom_functions
+│   └── .secrets   # Gitignored
 ├── git/           # Git configuration
 │   ├── .gitconfig
 │   └── .gitmessage
@@ -124,17 +125,19 @@ stow -D -t ~ zsh git npm
 
 ## Secrets
 
-Secrets are stored in `~/.secrets` which is:
+Secrets are stored in `zsh/.secrets` which is:
 
+- Symlinked to `~/.secrets`
 - Sourced by `.zshenv`
-- **NOT tracked in git**
+- **Gitignored** (never committed)
 
 To set up secrets on a new machine:
 
 ```bash
-touch ~/.secrets
-chmod 600 ~/.secrets
-# Add your tokens/keys to ~/.secrets
+touch ~/projects/dotfiles/zsh/.secrets
+chmod 600 ~/projects/dotfiles/zsh/.secrets
+cd ~/projects/dotfiles && stow -R -t ~ zsh
+# Add your tokens/keys to the file
 ```
 
 ## Customization
