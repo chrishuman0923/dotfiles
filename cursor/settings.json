@@ -1,0 +1,168 @@
+{
+  "[dockercompose]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "auto-close-tag.activationOnLanguage": [
+    "html",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "auto-close-tag.excludedTags": [
+    "area",
+    "base",
+    "br",
+    "col",
+    "command",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "keygen",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr"
+  ],
+  "auto-rename-tag.activationOnLanguage": [
+    "html",
+    "javascriptreact",
+    "typescriptreact",
+    "vue"
+  ],
+  "cSpell.ignorePaths": [
+    ".git/objects",
+    ".vscode-insiders",
+    "node_modules",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "vscode-extension"
+  ],
+  "cSpell.ignoreRegExpList": ["\\w+&apos;\\w+"],
+  "chatgpt.commentCodeLensEnabled": false,
+  "color-highlight.markerType": "dot-before",
+  "cursor.composer.usageSummaryDisplay": "always",
+  "cursor.cpp.disabledLanguages": ["plaintext"],
+  "cursor.general.enableShadowWorkspace": true,
+  "debug.console.fontFamily": "Anonymous Pro, monospace",
+  "debug.console.fontSize": 16,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": true,
+  "editor.fontFamily": "Anonymous Pro, monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineHeight": 0,
+  "editor.linkedEditing": true,
+  "editor.minimap.autohide": false,
+  "editor.minimap.enabled": true,
+  "editor.minimap.scale": 2,
+  "editor.minimap.size": "fill",
+  "editor.mouseWheelZoom": true,
+  "editor.quickSuggestions": {
+    "strings": "off"
+  },
+  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "emmet.includeLanguages": {
+    "html": "html",
+    "javascript": "javascriptreact",
+    "jsx": "javascriptreact",
+    "tsx": "typescriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.triggerExpansionOnTab": true,
+  "errorLens.excludeBySource": ["ts(17002)"],
+  "errorLens.excludePatterns": [
+    ".git/objects",
+    ".vscode",
+    "node_modules",
+    "vscode-extension"
+  ],
+  "errorLens.fontFamily": "Anonymous Pro",
+  "errorLens.fontSize": "16px",
+  "errorLens.messageBackgroundMode": "message",
+  "errorLens.messageMaxChars": 150,
+  "errorLens.messageTemplate": "$severity - $message ($source)",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmPasteNative": false,
+  "extensions.closeExtensionDetailsOnViewChange": true,
+  "extensions.ignoreRecommendations": true,
+  "files.autoSave": "off",
+  "files.enableTrash": false,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "fontshortcuts.defaultFontSize": 16,
+  "fontshortcuts.defaultTerminalFontSize": 16,
+  "fontshortcuts.step": 2,
+  "git-graph.repository.fetchAndPrune": true,
+  "git-graph.repository.fetchAndPruneTags": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.ignoreRebaseWarning": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "json.schemaDownload.enable": true,
+  "markdown.preview.fontFamily": "Anonymous Pro, monospace",
+  "markdown.preview.fontSize": 16,
+  "reactSnippets.settings.importReactOnTop": false,
+  "redhat.telemetry.enabled": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "sortJSON.contextMenu": {
+    "sortJSON": false,
+    "sortJSONAlphaNum": false,
+    "sortJSONAlphaNumReverse": false,
+    "sortJSONKeyLength": false,
+    "sortJSONKeyLengthReverse": false,
+    "sortJSONReverse": false,
+    "sortJSONType": false,
+    "sortJSONTypeReverse": false,
+    "sortJSONValues": false,
+    "sortJSONValuesReverse": false
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript"
+  },
+  "terminal.integrated.confirmOnExit": "always",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1",
+    "Q_NEW_SESSION": "1"
+  },
+  "terminal.integrated.fontFamily": "MesloLGS NF, monospace",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.scrollback": 10000,
+  "todohighlight.isEnable": true,
+  "todohighlight.keywords": [
+    {
+      "backgroundColor": "#225da1",
+      "color": "white",
+      "text": "TODO:"
+    }
+  ],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "update.showReleaseNotes": false,
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.limit.enabled": false,
+  "workbench.editor.openPositioning": "last",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.tips.enabled": false,
+  "workbench.tree.indent": 16,
+  "workbench.tree.renderIndentGuides": "always"
+}

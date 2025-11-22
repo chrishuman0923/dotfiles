@@ -43,38 +43,12 @@ if [[ ! -f "$DOTFILES_DIR/zsh/.secrets" ]]; then
   echo "# Add your secrets here" > "$DOTFILES_DIR/zsh/.secrets"
 fi
 
-# Check for existing dotfiles that would conflict with stow
+# Remove any existing config files that would conflict with stow
 echo "🔗 Preparing symlinks..."
-DOTFILES=(
-  ".zshrc" ".zshenv" ".zprofile" ".p10k.zsh"
-  ".zsh_custom_aliases" ".zsh_custom_functions" ".secrets"
-  ".gitconfig" ".gitmessage" ".npmrc"
-  ".ssh/config"
-)
-
-# Find conflicting files
-CONFLICTS=()
-for file in "${DOTFILES[@]}"; do
-  if [[ -f "$HOME/$file" && ! -L "$HOME/$file" ]]; then
-    CONFLICTS+=("$file")
-  fi
-done
-
-# Handle conflicts if any exist
-if [[ ${#CONFLICTS[@]} -gt 0 ]]; then
-  echo "  Found existing config files: ${CONFLICTS[*]}"
-  read -p "  Backup these files before replacing? (y/n): " BACKUP_CHOICE
-
-  for file in "${CONFLICTS[@]}"; do
-    if [[ "$BACKUP_CHOICE" =~ ^[Yy]$ ]]; then
-      echo "    Backing up $file"
-      mv "$HOME/$file" "$HOME/$file.backup"
-    else
-      echo "    Removing $file"
-      rm "$HOME/$file"
-    fi
-  done
-fi
+rm -f ~/.zshrc ~/.zshenv ~/.zprofile ~/.p10k.zsh
+rm -f ~/.zsh_custom_aliases ~/.zsh_custom_functions ~/.secrets
+rm -f ~/.gitconfig ~/.gitmessage ~/.npmrc
+rm -f ~/.ssh/config
 
 # Run stow
 echo "🔗 Creating symlinks..."
@@ -92,6 +66,14 @@ if ! command -v corepack &> /dev/null; then
   npm install -g corepack
 fi
 corepack enable
+
+# Configure macOS settings
+echo "🖥️  Configuring macOS settings..."
+"$DOTFILES_DIR/macos/dock.sh"
+
+# Configure apps
+echo "🔧 Configuring apps..."
+"$DOTFILES_DIR/cursor/setup.sh"
 
 echo ""
 echo "✅ Bootstrap complete!"
