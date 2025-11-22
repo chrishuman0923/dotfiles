@@ -34,7 +34,7 @@ dotfiles/
 git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles
 
 # Install dependencies
-brew install stow fnm eza bat fd zoxide fzf
+brew install stow fnm eza bat fd zoxide fzf git-delta lazygit
 
 # Create symlinks (from dotfiles directory)
 cd ~/projects/dotfiles
@@ -73,18 +73,39 @@ stow -D -t ~ zsh git npm
 - **Corepack enabled**: pnpm/yarn versions managed per-project via `package.json`
 
 ```json
-// package.json - corepack will auto-download this version
 "packageManager": "pnpm@9.15.0"
 ```
 
 ### Modern CLI Tools
 
-| Command                | Tool   | Description                      |
-| ---------------------- | ------ | -------------------------------- |
-| `ls`, `ll`, `la`, `lt` | eza    | Better ls with icons, git status |
-| `cat`, `catp`          | bat    | Syntax-highlighted file viewing  |
-| `find`                 | fd     | Faster, simpler find             |
-| `z <path>`             | zoxide | Smart cd that learns your habits |
+| Command                | Tool   | Description                        |
+| ---------------------- | ------ | ---------------------------------- |
+| `ls`, `ll`, `la`, `lt` | eza    | Better ls with icons, git status   |
+| `cat`, `catp`          | bat    | Syntax-highlighted file viewing    |
+| `find`                 | fd     | Faster, simpler find               |
+| `z <path>`             | zoxide | Smart cd that learns your habits   |
+| `git diff`, `git log`  | delta  | Syntax-highlighted git diffs       |
+| `lg`                   | lazygit| Terminal UI for git                |
+
+### Git Aliases
+
+| Alias  | Command                       |
+| ------ | ----------------------------- |
+| `g`    | `git`                         |
+| `gs`   | `git status`                  |
+| `gd`   | `git diff`                    |
+| `gds`  | `git diff --staged`           |
+| `ga`   | `git add`                     |
+| `gc`   | `git commit`                  |
+| `gcm`  | `git commit -m`               |
+| `gp`   | `git push`                    |
+| `gl`   | `git pull`                    |
+| `gco`  | `git checkout`                |
+| `gcb`  | `git checkout -b`             |
+| `gb`   | `git branch`                  |
+| `glog` | `git log --oneline --graph`   |
+| `gst`  | `git stash`                   |
+| `gstp` | `git stash pop`               |
 
 ### pnpm Aliases
 
@@ -94,10 +115,12 @@ stow -D -t ~ zsh git npm
 | `pi`  | `pnpm install` |
 | `pa`  | `pnpm add`     |
 | `pad` | `pnpm add -D`  |
+| `prm` | `pnpm remove`  |
 | `px`  | `pnpm dlx`     |
 | `pd`  | `pnpm dev`     |
 | `pb`  | `pnpm build`   |
 | `pt`  | `pnpm test`    |
+| `pex` | `pnpm exec`    |
 
 ## Secrets
 
