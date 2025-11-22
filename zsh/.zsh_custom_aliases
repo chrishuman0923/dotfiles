@@ -1,6 +1,15 @@
 #!shellscript
+# Custom Aliases
 
-# ls alias now defined in .zshrc using eza
+# Modern CLI replacements (eza, bat, fd)
+alias ls="eza --icons --group-directories-first"
+alias ll="eza -la --icons --group-directories-first --git"
+alias la="eza -a --icons --group-directories-first"
+alias lt="eza --tree --level=2 --icons"
+alias cat="bat --paging=never"
+alias catp="bat"  # cat with pager
+alias find="fd"
 
+# AWS
 alias aws-unset='assume --unset'
 alias aws-creds='aws configure export-credentials --format env'

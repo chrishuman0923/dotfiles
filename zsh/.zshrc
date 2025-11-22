@@ -85,14 +85,5 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers -
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
-# Modern CLI tool aliases (eza, bat, fd)
-alias ls="eza --icons --group-directories-first"
-alias ll="eza -la --icons --group-directories-first --git"
-alias la="eza -a --icons --group-directories-first"
-alias lt="eza --tree --level=2 --icons"
-alias cat="bat --paging=never"
-alias catp="bat"  # cat with pager
-alias find="fd"
-
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
