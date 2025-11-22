@@ -19,6 +19,8 @@ dotfiles/
 │   └── .gitmessage
 ├── npm/           # NPM configuration
 │   └── .npmrc
+├── ssh/           # SSH configuration
+│   └── .ssh/config
 ├── fonts/         # Custom fonts (Anonymous Pro)
 ├── Brewfile       # Homebrew dependencies (CLI tools, apps, VS Code extensions)
 └── bootstrap.sh   # New machine setup script
@@ -29,13 +31,13 @@ dotfiles/
 ### Prerequisites
 
 - macOS (Apple Silicon)
-- Git and SSH key configured for GitHub
+- Git (comes with Xcode Command Line Tools)
 
 ### Quick Start (New Machine)
 
 ```bash
 # One-liner to bootstrap everything
-git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles && ~/projects/dotfiles/bootstrap.sh
+git clone https://github.com/chrishuman0923/dotfiles.git ~/projects/dotfiles && ~/projects/dotfiles/bootstrap.sh
 ```
 
 The bootstrap script will:
@@ -51,14 +53,14 @@ The bootstrap script will:
 
 ```bash
 # Clone the repo
-git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles
+git clone https://github.com/chrishuman0923/dotfiles.git ~/projects/dotfiles
 cd ~/projects/dotfiles
 
 # Install all dependencies from Brewfile
 brew bundle
 
 # Create symlinks
-stow -t ~ zsh git npm
+stow -t ~ zsh git npm ssh
 
 # Setup Node (latest LTS)
 eval "$(fnm env)"
@@ -70,7 +72,7 @@ corepack enable
 
 ```bash
 cd ~/projects/dotfiles
-stow -D -t ~ zsh git npm
+stow -D -t ~ zsh git npm ssh
 ```
 
 ## Features
@@ -130,6 +132,47 @@ stow -D -t ~ zsh git npm
 | `pb`  | `pnpm build`   |
 | `pt`  | `pnpm test`    |
 | `pex` | `pnpm exec`    |
+
+## SSH Setup
+
+After running bootstrap, set up your SSH key for GitHub:
+
+### New Machine (key stored in 1Password)
+
+1. Open 1Password and find your SSH key
+2. Copy the private key to `~/.ssh/`:
+   ```bash
+   # Create the file and paste your private key
+   nano ~/.ssh/id_github
+
+   # Set correct permissions
+   chmod 600 ~/.ssh/id_github
+   ```
+3. Add to macOS keychain:
+   ```bash
+   ssh-add --apple-use-keychain ~/.ssh/id_github
+   ```
+4. Test the connection:
+   ```bash
+   ssh -T git@github.com
+   ```
+
+### First Time Setup (no existing key)
+
+1. Generate a new Ed25519 key:
+   ```bash
+   ssh-keygen -t ed25519 -f ~/.ssh/id_github -C "your_email@example.com"
+   ```
+2. Add to macOS keychain:
+   ```bash
+   ssh-add --apple-use-keychain ~/.ssh/id_github
+   ```
+3. Copy public key:
+   ```bash
+   pbcopy < ~/.ssh/id_github.pub
+   ```
+4. Add to GitHub: Settings → SSH and GPG keys → New SSH key
+5. Save private key to 1Password for backup/sync
 
 ## Secrets
 

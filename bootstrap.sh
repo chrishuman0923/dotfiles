@@ -22,7 +22,7 @@ fi
 if [[ ! -d "$DOTFILES_DIR" ]]; then
   echo "📁 Cloning dotfiles..."
   mkdir -p "$HOME/projects"
-  git clone git@github.com:chrishuman0923/dotfiles.git "$DOTFILES_DIR"
+  git clone https://github.com/chrishuman0923/dotfiles.git "$DOTFILES_DIR"
 fi
 
 cd "$DOTFILES_DIR"
@@ -49,6 +49,7 @@ DOTFILES=(
   ".zshrc" ".zshenv" ".zprofile" ".p10k.zsh"
   ".zsh_custom_aliases" ".zsh_custom_functions" ".secrets"
   ".gitconfig" ".gitmessage" ".npmrc"
+  ".ssh/config"
 )
 
 # Find conflicting files
@@ -77,7 +78,7 @@ fi
 
 # Run stow
 echo "🔗 Creating symlinks..."
-stow -t ~ zsh git npm
+stow -t ~ zsh git npm ssh
 
 # Setup fnm and Node
 echo "📦 Setting up Node.js..."
@@ -96,6 +97,7 @@ echo ""
 echo "✅ Bootstrap complete!"
 echo ""
 echo "Next steps:"
-echo "  1. Add your secrets to: $DOTFILES_DIR/zsh/.secrets"
-echo "  2. Restart your terminal or run: exec zsh"
+echo "  1. Set up SSH key (see README for instructions)"
+echo "  2. Add your secrets to: $DOTFILES_DIR/zsh/.secrets"
+echo "  3. Restart your terminal or run: exec zsh"
 echo ""
