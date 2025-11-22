@@ -19,6 +19,7 @@ dotfiles/
 │   └── .gitmessage
 ├── npm/           # NPM configuration
 │   └── .npmrc
+├── fonts/         # Custom fonts (Anonymous Pro)
 ├── Brewfile       # Homebrew dependencies (CLI tools, apps, VS Code extensions)
 └── bootstrap.sh   # New machine setup script
 ```
@@ -40,6 +41,7 @@ git clone git@github.com:chrishuman0923/dotfiles.git ~/projects/dotfiles && ~/pr
 The bootstrap script will:
 - Install Homebrew (if needed)
 - Install all dependencies from Brewfile (CLI tools, apps, VS Code extensions)
+- Install custom fonts (Anonymous Pro)
 - Prompt to backup or remove any conflicting config files
 - Create symlinks for all dotfiles via stow
 - Set up Node.js (latest LTS) via fnm

@@ -21,7 +21,9 @@ brew "webp"
 cask "1password"
 cask "1password-cli"
 cask "alfred"
+cask "nordvpn"
 cask "obsidian"
+cask "rectangle"
 cask "zoom"
 
 # Apps - Development

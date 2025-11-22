@@ -31,6 +31,10 @@ cd "$DOTFILES_DIR"
 echo "📦 Installing apps and tools from Brewfile..."
 brew bundle --file="$DOTFILES_DIR/Brewfile"
 
+# Install fonts
+echo "🔤 Installing fonts..."
+cp "$DOTFILES_DIR/fonts/"*.ttf "$HOME/Library/Fonts/" 2>/dev/null || true
+
 # Create secrets file if it doesn't exist
 if [[ ! -f "$DOTFILES_DIR/zsh/.secrets" ]]; then
   echo "🔐 Creating empty secrets file..."
