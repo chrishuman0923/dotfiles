@@ -6,24 +6,38 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ```
 dotfiles/
-├── zsh/           # Zsh shell configuration
+├── zsh/                    # Zsh shell configuration
 │   ├── .zshrc
 │   ├── .zshenv
 │   ├── .zprofile
 │   ├── .p10k.zsh
 │   ├── .zsh_custom_aliases
 │   ├── .zsh_custom_functions
-│   └── .secrets   # Gitignored
-├── git/           # Git configuration
+│   └── .secrets            # Gitignored
+├── git/                    # Git configuration
 │   ├── .gitconfig
 │   └── .gitmessage
-├── npm/           # NPM configuration
+├── npm/                    # NPM configuration
 │   └── .npmrc
-├── ssh/           # SSH configuration
+├── ssh/                    # SSH configuration
 │   └── .ssh/config
-├── fonts/         # Custom fonts (Anonymous Pro)
-├── Brewfile       # Homebrew dependencies (CLI tools, apps, VS Code extensions)
-└── bootstrap.sh   # New machine setup script
+├── cursor/                 # Cursor IDE settings
+│   ├── settings.json
+│   ├── keybindings.json
+│   ├── snippets/
+│   └── setup.sh
+├── alfred/                 # Alfred preferences & workflows
+│   ├── Alfred.alfredpreferences/
+│   └── setup.sh
+├── macos/                  # macOS system preferences
+│   ├── dock.sh
+│   ├── finder.sh
+│   ├── keyboard.sh
+│   ├── screenshots.sh
+│   └── spotlight.sh
+├── fonts/                  # Custom fonts (Anonymous Pro)
+├── Brewfile                # Homebrew dependencies
+└── bootstrap.sh            # New machine setup script
 ```
 
 ## Installation
@@ -41,13 +55,15 @@ git clone https://github.com/chrishuman0923/dotfiles.git ~/projects/dotfiles && 
 ```
 
 The bootstrap script will:
+
 - Install Homebrew (if needed)
 - Install all dependencies from Brewfile (CLI tools, apps, VS Code extensions)
 - Install custom fonts (Anonymous Pro)
-- Prompt to backup or remove any conflicting config files
 - Create symlinks for all dotfiles via stow
 - Set up Node.js (latest LTS) via fnm
 - Enable corepack for pnpm/yarn
+- Configure macOS settings (Dock, Finder, keyboard, screenshots, Spotlight)
+- Configure apps (Cursor, Alfred)
 
 ### Manual Installation
 
@@ -66,6 +82,15 @@ stow -t ~ zsh git npm ssh
 eval "$(fnm env)"
 fnm install --lts && fnm default lts-latest
 corepack enable
+
+# Run macOS and app setup scripts
+./macos/dock.sh
+./macos/finder.sh
+./macos/keyboard.sh
+./macos/screenshots.sh
+./macos/spotlight.sh
+./cursor/setup.sh
+./alfred/setup.sh
 ```
 
 ### Uninstall (remove symlinks)
@@ -74,6 +99,38 @@ corepack enable
 cd ~/projects/dotfiles
 stow -D -t ~ zsh git npm ssh
 ```
+
+## macOS Settings
+
+The `macos/` scripts configure system preferences:
+
+| Script           | What it does                                                                     |
+| ---------------- | -------------------------------------------------------------------------------- |
+| `dock.sh`        | Auto-hide, minimum size, magnification, genie effect, only Finder/Settings/Trash |
+| `finder.sh`      | Show hidden files, extensions, path bar, list view, disable .DS_Store on network |
+| `keyboard.sh`    | Fast key repeat, disable auto-correct/capitalize/smart quotes                    |
+| `screenshots.sh` | Save to ~/Screenshots as PNG, disable shadows                                    |
+| `spotlight.sh`   | Rebind to option+space (frees cmd+space for Alfred)                              |
+
+## App Configuration
+
+### Alfred
+
+After bootstrap, complete Alfred setup:
+
+1. **Powerpack**: Open Alfred Preferences → Powerpack → Enter your license
+2. **Hotkey**: Set to cmd+space in Preferences → General
+3. **Sync**: Set folder to `~/Alfred.alfredpreferences` in Preferences → Advanced → Syncing
+
+Your workflows and preferences are stored in `alfred/Alfred.alfredpreferences/`.
+
+### Cursor
+
+Settings, keybindings, and snippets are symlinked automatically:
+
+- `~/Library/Application Support/Cursor/User/settings.json`
+- `~/Library/Application Support/Cursor/User/keybindings.json`
+- `~/Library/Application Support/Cursor/User/snippets/`
 
 ## Features
 
@@ -89,34 +146,34 @@ stow -D -t ~ zsh git npm ssh
 
 ### Modern CLI Tools
 
-| Command                | Tool   | Description                        |
-| ---------------------- | ------ | ---------------------------------- |
-| `ls`, `ll`, `la`, `lt` | eza    | Better ls with icons, git status   |
-| `cat`, `catp`          | bat    | Syntax-highlighted file viewing    |
-| `find`                 | fd     | Faster, simpler find               |
-| `z <path>`             | zoxide | Smart cd that learns your habits   |
-| `git diff`, `git log`  | delta  | Syntax-highlighted git diffs       |
-| `lg`                   | lazygit| Terminal UI for git                |
+| Command                | Tool    | Description                      |
+| ---------------------- | ------- | -------------------------------- |
+| `ls`, `ll`, `la`, `lt` | eza     | Better ls with icons, git status |
+| `cat`, `catp`          | bat     | Syntax-highlighted file viewing  |
+| `find`                 | fd      | Faster, simpler find             |
+| `z <path>`             | zoxide  | Smart cd that learns your habits |
+| `git diff`, `git log`  | delta   | Syntax-highlighted git diffs     |
+| `lg`                   | lazygit | Terminal UI for git              |
 
 ### Git Aliases
 
-| Alias  | Command                       |
-| ------ | ----------------------------- |
-| `g`    | `git`                         |
-| `gs`   | `git status`                  |
-| `gd`   | `git diff`                    |
-| `gds`  | `git diff --staged`           |
-| `ga`   | `git add`                     |
-| `gc`   | `git commit`                  |
-| `gcm`  | `git commit -m`               |
-| `gp`   | `git push`                    |
-| `gl`   | `git pull`                    |
-| `gco`  | `git checkout`                |
-| `gcb`  | `git checkout -b`             |
-| `gb`   | `git branch`                  |
-| `glog` | `git log --oneline --graph`   |
-| `gst`  | `git stash`                   |
-| `gstp` | `git stash pop`               |
+| Alias  | Command                     |
+| ------ | --------------------------- |
+| `g`    | `git`                       |
+| `gs`   | `git status`                |
+| `gd`   | `git diff`                  |
+| `gds`  | `git diff --staged`         |
+| `ga`   | `git add`                   |
+| `gc`   | `git commit`                |
+| `gcm`  | `git commit -m`             |
+| `gp`   | `git push`                  |
+| `gl`   | `git pull`                  |
+| `gco`  | `git checkout`              |
+| `gcb`  | `git checkout -b`           |
+| `gb`   | `git branch`                |
+| `glog` | `git log --oneline --graph` |
+| `gst`  | `git stash`                 |
+| `gstp` | `git stash pop`             |
 
 ### pnpm Aliases
 
@@ -141,6 +198,7 @@ After running bootstrap, set up your SSH key for GitHub:
 
 1. Open 1Password and find your SSH key
 2. Copy the private key to `~/.ssh/`:
+
    ```bash
    # Create the file and paste your private key
    nano ~/.ssh/id_github
@@ -148,6 +206,7 @@ After running bootstrap, set up your SSH key for GitHub:
    # Set correct permissions
    chmod 600 ~/.ssh/id_github
    ```
+
 3. Add to macOS keychain:
    ```bash
    ssh-add --apple-use-keychain ~/.ssh/id_github
@@ -196,12 +255,15 @@ cd ~/projects/dotfiles && stow -R -t ~ zsh
 - **Shell aliases**: Edit `zsh/.zsh_custom_aliases`
 - **Shell functions**: Edit `zsh/.zsh_custom_functions`
 - **Prompt theme**: Run `p10k configure` or edit `zsh/.p10k.zsh`
+- **Cursor settings**: Edit `cursor/settings.json`
+- **macOS prefs**: Edit scripts in `macos/`
 
 ## Managing Dependencies
 
 The `Brewfile` contains all Homebrew dependencies:
+
 - CLI tools (bat, eza, fd, fnm, fzf, etc.)
-- Applications (1Password, Cursor, Docker, etc.)
+- Applications (1Password, Alfred, Cursor, Docker, etc.)
 - VS Code/Cursor extensions
 
 To update the Brewfile after installing new packages:
