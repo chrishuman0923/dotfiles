@@ -72,9 +72,12 @@ echo "🖥️  Configuring macOS settings..."
 "$DOTFILES_DIR/macos/dock.sh"
 "$DOTFILES_DIR/macos/finder.sh"
 "$DOTFILES_DIR/macos/keyboard.sh"
+"$DOTFILES_DIR/macos/screenshots.sh"
+"$DOTFILES_DIR/macos/spotlight.sh"
 
 # Configure apps
 echo "🔧 Configuring apps..."
+"$DOTFILES_DIR/alfred/setup.sh"
 "$DOTFILES_DIR/cursor/setup.sh"
 
 echo ""

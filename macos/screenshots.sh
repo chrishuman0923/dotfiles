@@ -20,4 +20,3 @@ defaults write com.apple.screencapture disable-shadow -bool true
 killall SystemUIServer
 
 echo "Screenshots configured."
-echo "Note: Custom keybinds (cmd+shift+s) must be set manually in System Settings > Keyboard > Shortcuts"

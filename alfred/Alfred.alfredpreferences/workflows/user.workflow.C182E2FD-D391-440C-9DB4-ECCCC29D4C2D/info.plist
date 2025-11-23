@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapp.copyzoomurl</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>22DE6C49-C251-40AA-80CE-4973DB62D469</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C83FE709-4E26-4BB5-9ED9-971234EE8D87</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Chris Human</string>
+	<key>description</key>
+	<string>Add my custom zoom meeting url to my clipboard</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Copy Zoom Meeting URL</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{var:zoom_url}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>C83FE709-4E26-4BB5-9ED9-971234EE8D87</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>zm</string>
+				<key>subtext</key>
+				<string>https://glgroup.zoom.us/my/chuman</string>
+				<key>text</key>
+				<string>Copy Zoom Meeting URL</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>22DE6C49-C251-40AA-80CE-4973DB62D469</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>This workflow that adds the {zoom_url} env variable to the clipborad for easy distribution to others.</string>
+	<key>uidata</key>
+	<dict>
+		<key>22DE6C49-C251-40AA-80CE-4973DB62D469</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+		<key>C83FE709-4E26-4BB5-9ED9-971234EE8D87</key>
+		<dict>
+			<key>xpos</key>
+			<real>265</real>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variables</key>
+	<dict>
+		<key>zoom_url</key>
+		<string>https://glgroup.zoom.us/my/chuman</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>zoom_url</string>
+	</array>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
