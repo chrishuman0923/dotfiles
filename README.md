@@ -136,13 +136,20 @@ Settings, keybindings, and snippets are symlinked automatically:
 
 ### Node Version Management (fnm)
 
-- **Auto-switch**: `cd` into a folder with `.nvmrc` → automatically switches (and installs if missing)
+- **Auto-switch**: Automatically switches Node version when:
+  - `cd` into a folder with `.nvmrc` or `.node-version`
+  - Opening a new terminal tab in a project directory
+  - Installs missing versions automatically
 - **Fast**: Written in Rust, ~40x faster than nvm
-- **Corepack enabled**: pnpm/yarn versions managed per-project via `package.json`
+- **Corepack enabled**: pnpm/yarn versions automatically prepared per-project via `package.json`
+
+When you enter a directory with a `packageManager` field in `package.json`, the correct version is automatically downloaded and activated:
 
 ```json
 "packageManager": "pnpm@9.15.0"
 ```
+
+The version management hook is optimized for performance with directory and package manager caching to avoid redundant work.
 
 ### Modern CLI Tools
 

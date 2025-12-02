@@ -164,5 +164,7 @@
   "workbench.iconTheme": "vscode-icons",
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 16,
-  "workbench.tree.renderIndentGuides": "always"
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.editor.enablePreview": false,
+  "claudeCode.preferredLocation": "panel"
 }

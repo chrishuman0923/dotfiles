@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
+    "alfredpreferences",
     "aloxaf",
     "appendhistory",
     "catp",
@@ -13,7 +14,9 @@
     "glog",
     "gstp",
     "histdup",
+    "killall",
     "killpid",
+    "libexec",
     "lukechilds",
     "myip",
     "ngrok",
@@ -22,10 +25,13 @@
     "omzp",
     "oneline",
     "powerlevel",
+    "powerpack",
     "romkatv",
     "savehist",
+    "screencapture",
     "sharehistory",
     "shellenv",
+    "symbolichotkeys",
     "zcompdump",
     "zinit"
   ]

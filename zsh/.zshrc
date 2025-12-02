@@ -1,6 +1,5 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -86,12 +85,14 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 # fnm (Fast Node Manager) with auto-install on cd
 eval "$(fnm env --resolve-engines --version-file-strategy=recursive --corepack-enabled)"
-_fnm_autoload_hook() {
-  if [[ -f .nvmrc || -f .node-version ]]; then
-    fnm use --install-if-missing --silent-if-unchanged 2>/dev/null
-  fi
-}
-add-zsh-hook chpwd _fnm_autoload_hook
+# Ensure corepack is enabled (sets up shims for pnpm/yarn)
+# fnm --corepack-enabled includes corepack in PATH, but we need to enable it
+command -v corepack &> /dev/null && corepack enable &>/dev/null
 
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+# Register project version management hook (function defined in .zsh_custom_functions)
+# Hook runs on directory change and shell initialization
+add-zsh-hook chpwd project_version_hook
+project_version_hook
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

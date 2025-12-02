@@ -47,3 +47,54 @@ ngrokbf() {
   cp ~/Library/Application\ Support/ngrok/ngrok-bf.yml ~/Library/Application\ Support/ngrok/ngrok.yml
   ngrok http --url=stable-firefly-nominally.ngrok-free.app $1
 }
+
+# ----------------------
+# Project version management hook
+# Auto-switches Node version (fnm) and prepares corepack package manager
+# Optimized for performance with caching to avoid redundant work
+# ----------------------
+project_version_hook() {
+  local current_dir="${PWD}"
+
+  # Skip if we're in the same directory (cached)
+  [[ "$current_dir" == "$_project_version_last_dir" ]] && return
+  _project_version_last_dir="$current_dir"
+
+  # Switch Node version if .nvmrc or .node-version exists (fast check, fnm handles caching)
+  if [[ -f .nvmrc || -f .node-version ]]; then
+    fnm use --install-if-missing --silent-if-unchanged 2>/dev/null
+  fi
+
+  # Prepare corepack package manager if package.json has packageManager field
+  # Only check if package.json exists (fast file check)
+  if [[ -f package.json ]] && command -v corepack &> /dev/null; then
+    # Fast extraction: prefer jq (single pass), fall back to grep+sed (also fast)
+    local package_manager=""
+    if command -v jq &> /dev/null; then
+      package_manager=$(jq -r '.packageManager // empty' package.json 2>/dev/null)
+    else
+      # Single grep pass with minimal sed processing (portable, no -P flag)
+      package_manager=$(grep -m1 -o '"packageManager"[[:space:]]*:[[:space:]]*"[^"]*"' package.json 2>/dev/null | sed -E 's/.*"packageManager"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/')
+    fi
+
+    # Only prepare if we have a valid packageManager and it's different from last
+    if [[ -n "$package_manager" && "$package_manager" != "null" && "$package_manager" != "empty" && "$package_manager" != "$_project_version_last_pm" ]]; then
+      _project_version_last_pm="$package_manager"
+      # corepack prepare downloads/prepares the package manager
+      # The --activate flag ensures it's ready to use
+      corepack prepare "$package_manager" --activate &>/dev/null
+
+      # Extract package manager name (pnpm, yarn, etc.) to verify it's available
+      local pm_name="${package_manager%%@*}"
+      # Verify the package manager is now available (corepack shims should make it available)
+      if ! command -v "$pm_name" &> /dev/null; then
+        # If not available, ensure corepack is enabled (should already be via fnm --corepack-enabled)
+        # This is a fallback - fnm should handle this, but just in case
+        corepack enable &>/dev/null
+      fi
+    fi
+  else
+    # Reset cache if no package.json
+    _project_version_last_pm=""
+  fi
+}
