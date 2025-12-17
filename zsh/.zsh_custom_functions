@@ -65,6 +65,13 @@ project_version_hook() {
     fnm use --install-if-missing --silent-if-unchanged 2>/dev/null
   fi
 
+  # Ensure corepack is available (Node 25+ doesn't include it by default)
+  # Check if corepack command exists, if not install it globally
+  if command -v node &> /dev/null && ! command -v corepack &> /dev/null; then
+    echo "Installing corepack for Node $(node --version)..."
+    npm install -g corepack &>/dev/null && corepack enable &>/dev/null
+  fi
+
   # Prepare corepack package manager if package.json has packageManager field
   # Only check if package.json exists (fast file check)
   if [[ -f package.json ]] && command -v corepack &> /dev/null; then
