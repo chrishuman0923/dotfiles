@@ -25,13 +25,18 @@
     "key": "shift+space",
     "command": "editor.action.triggerSuggest",
     "when": "true"
-},
-{
+  },
+  {
     "key": "shift+enter",
     "command": "workbench.action.terminal.sendSequence",
     "args": {
-        "text": "\u001b\r"
+      "text": "\u001b\r"
     },
     "when": "terminalFocus"
-}
+  },
+  {
+    "key": "ctrl+alt+cmd+s",
+    "command": "workbench.action.toggleUnifiedSidebar",
+    "when": "cursor.agentIdeUnification.enabled && !isAuxiliaryWindowFocusedContext"
+  }
 ]
