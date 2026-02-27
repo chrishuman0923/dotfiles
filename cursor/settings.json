@@ -165,6 +165,6 @@
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 16,
   "workbench.tree.renderIndentGuides": "always",
-  "workbench.editor.enablePreview": false,
-  "claudeCode.preferredLocation": "panel"
+  "claudeCode.preferredLocation": "panel",
+  "workbench.editor.enablePreview": false
 }

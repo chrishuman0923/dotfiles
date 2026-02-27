@@ -35,8 +35,18 @@
     "when": "terminalFocus"
   },
   {
+    "key": "alt+cmd+s",
+    "command": "workbench.action.files.saveAll",
+    "when": "true"
+  },
+  {
     "key": "ctrl+alt+cmd+s",
     "command": "workbench.action.toggleUnifiedSidebar",
+    "when": "cursor.agentIdeUnification.enabled && !isAuxiliaryWindowFocusedContext"
+  },
+  {
+    "key": "alt+cmd+s",
+    "command": "-workbench.action.toggleUnifiedSidebar",
     "when": "cursor.agentIdeUnification.enabled && !isAuxiliaryWindowFocusedContext"
   }
 ]
