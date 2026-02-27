@@ -286,3 +286,24 @@ To install everything from the Brewfile:
 cd ~/projects/dotfiles
 brew bundle
 ```
+
+To view dependency drift between the tracked `Brewfile` and what is currently installed via Homebrew:
+
+```bash
+cd ~/projects/dotfiles
+./brew-diff.sh
+```
+
+By default, this filters formulae using `brew leaves`, which excludes most transitive dependency noise and keeps the diff focused on top-level installs.
+
+Optional: include raw file-level diff output:
+
+```bash
+./brew-diff.sh ./Brewfile --full-diff
+```
+
+Optional: include dependency formulae in the comparison:
+
+```bash
+./brew-diff.sh --include-deps
+```
