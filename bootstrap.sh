@@ -1,6 +1,22 @@
 #!/bin/bash
 set -e
 
+warn() {
+  echo "⚠️  $1"
+}
+
+run_script_nonfatal() {
+  local script="$1"
+  if [[ ! -f "$script" ]]; then
+    warn "Missing script: $script (skipping)"
+    return 0
+  fi
+
+  if ! "$script"; then
+    warn "Failed: $script (continuing)"
+  fi
+}
+
 echo "🚀 Bootstrapping dotfiles..."
 
 # Check for macOS
@@ -29,7 +45,10 @@ cd "$DOTFILES_DIR"
 
 # Install dependencies via Brewfile
 echo "📦 Installing apps and tools from Brewfile..."
-brew bundle --file="$DOTFILES_DIR/Brewfile"
+if ! brew bundle --file="$DOTFILES_DIR/Brewfile"; then
+  echo "⚠️  brew bundle reported one or more failures."
+  echo "⚠️  Continuing bootstrap so dotfiles and core setup can still complete."
+fi
 
 # Install fonts
 echo "🔤 Installing fonts..."
@@ -52,34 +71,57 @@ rm -f ~/.ssh/config
 
 # Run stow
 echo "🔗 Creating symlinks..."
-stow -t ~ zsh git npm ssh
+if ! stow -t ~ zsh git npm ssh; then
+  warn "stow failed; fix conflicts and rerun: stow -t ~ zsh git npm ssh"
+fi
 
 # Setup fnm and Node
 echo "📦 Setting up Node.js..."
-eval "$(fnm env)"
-fnm install --lts
-fnm default lts-latest
+if command -v fnm &> /dev/null; then
+  if ! eval "$(fnm env)"; then
+    warn "fnm env failed; skipping Node setup"
+  elif ! fnm install --lts; then
+    warn "fnm install --lts failed; continuing"
+  elif ! fnm default lts-latest; then
+    warn "fnm default lts-latest failed; continuing"
+  fi
+else
+  warn "fnm is not installed; skipping Node setup"
+fi
 
 # Enable corepack (install if not bundled with Node)
 echo "📦 Enabling corepack..."
-if ! command -v corepack &> /dev/null; then
-  npm install -g corepack
+if ! command -v npm &> /dev/null; then
+  warn "npm is not installed; skipping corepack setup"
+else
+  if ! command -v corepack &> /dev/null; then
+    if ! npm install -g corepack; then
+      warn "Failed to install corepack via npm"
+    fi
+  fi
+
+  if command -v corepack &> /dev/null; then
+    if ! corepack enable; then
+      warn "corepack enable failed; continuing"
+    fi
+  else
+    warn "corepack is still unavailable; skipping enable"
+  fi
 fi
-corepack enable
 
 # Configure macOS settings
 echo "🖥️  Configuring macOS settings..."
-"$DOTFILES_DIR/macos/system.sh"
-"$DOTFILES_DIR/macos/dock.sh"
-"$DOTFILES_DIR/macos/finder.sh"
-"$DOTFILES_DIR/macos/keyboard.sh"
-"$DOTFILES_DIR/macos/screenshots.sh"
-"$DOTFILES_DIR/macos/spotlight.sh"
+run_script_nonfatal "$DOTFILES_DIR/macos/system.sh"
+run_script_nonfatal "$DOTFILES_DIR/macos/dock.sh"
+run_script_nonfatal "$DOTFILES_DIR/macos/finder.sh"
+run_script_nonfatal "$DOTFILES_DIR/macos/keyboard.sh"
+run_script_nonfatal "$DOTFILES_DIR/macos/screenshots.sh"
+run_script_nonfatal "$DOTFILES_DIR/macos/spotlight.sh"
 
 # Configure apps
 echo "🔧 Configuring apps..."
-"$DOTFILES_DIR/alfred/setup.sh"
-"$DOTFILES_DIR/cursor/setup.sh"
+run_script_nonfatal "$DOTFILES_DIR/alfred/setup.sh"
+run_script_nonfatal "$DOTFILES_DIR/cursor/setup.sh"
 
 echo ""
 echo "✅ Bootstrap complete!"

@@ -75,7 +75,11 @@ cd ~/projects/dotfiles
 # Install all dependencies from Brewfile
 brew bundle
 
-# Create symlinks
+# Remove any existing files that conflict with stow, then create symlinks
+rm -f ~/.zshrc ~/.zshenv ~/.zprofile ~/.p10k.zsh
+rm -f ~/.zsh_custom_aliases ~/.zsh_custom_functions ~/.secrets
+rm -f ~/.gitconfig ~/.gitmessage ~/.npmrc
+rm -f ~/.ssh/config
 stow -t ~ zsh git npm ssh
 
 # Setup Node (latest LTS)
