@@ -6,7 +6,7 @@
 [pull]
 	rebase = false
 [core]
-	editor = cursor -w
+	editor = code -w
 	pager = delta
 [interactive]
 	diffFilter = delta --color-only
@@ -16,12 +16,12 @@
 	line-numbers = true
 	side-by-side = false
 [diff]
-	tool = cursor
-[difftool "cursor"]
-	cmd = "cursor -w --diff  "
+	tool = vscode
+[difftool "vscode"]
+	cmd = "code -w --diff $LOCAL $REMOTE"
 [merge]
-	tool = cursor
-[mergetool "cursor"]
-	cmd = "cursor -w "
+	tool = vscode
+[mergetool "vscode"]
+	cmd = "code -w $MERGED"
 [commit]
 	template = /Users/chuman/.gitmessage

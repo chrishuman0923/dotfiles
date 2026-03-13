@@ -48,9 +48,6 @@
   "cSpell.ignoreRegExpList": ["\\w+&apos;\\w+"],
   "chatgpt.commentCodeLensEnabled": false,
   "color-highlight.markerType": "dot-before",
-  "cursor.composer.usageSummaryDisplay": "always",
-  "cursor.cpp.disabledLanguages": ["plaintext"],
-  "cursor.general.enableShadowWorkspace": true,
   "debug.console.fontFamily": "Anonymous Pro, monospace",
   "debug.console.fontSize": 16,
   "diffEditor.hideUnchangedRegions.enabled": true,
@@ -66,7 +63,7 @@
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 0,
   "editor.linkedEditing": true,
-  "editor.minimap.autohide": false,
+  "editor.minimap.autohide": "none",
   "editor.minimap.enabled": true,
   "editor.minimap.scale": 2,
   "editor.minimap.size": "fill",
@@ -166,5 +163,6 @@
   "workbench.tree.indent": 16,
   "workbench.tree.renderIndentGuides": "always",
   "claudeCode.preferredLocation": "panel",
-  "workbench.editor.enablePreview": false
+  "workbench.editor.enablePreview": false,
+  "editor.fontWeight": "normal"
 }

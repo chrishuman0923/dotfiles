@@ -1,0 +1,12 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "alt+cmd+s",
+    "command": "workbench.action.files.saveAll",
+    "when": "true"
+  },
+  {
+    "key": "cmd+r cmd+w",
+    "command": "workbench.action.closeAllEditors"
+  }
+]

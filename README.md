@@ -21,7 +21,7 @@ dotfiles/
 │   └── .npmrc
 ├── ssh/                    # SSH configuration
 │   └── .ssh/config
-├── cursor/                 # Cursor IDE settings
+├── vscode/                 # VS Code settings
 │   ├── settings.json
 │   ├── keybindings.json
 │   ├── snippets/
@@ -63,7 +63,7 @@ The bootstrap script will:
 - Set up Node.js (latest LTS) via fnm
 - Enable corepack for pnpm/yarn
 - Configure macOS settings (Dock, Finder, keyboard, screenshots, Spotlight)
-- Configure apps (Cursor, Alfred)
+- Configure apps (VS Code, Alfred)
 
 ### Manual Installation
 
@@ -93,7 +93,7 @@ corepack enable
 ./macos/keyboard.sh
 ./macos/screenshots.sh
 ./macos/spotlight.sh
-./cursor/setup.sh
+./vscode/setup.sh
 ./alfred/setup.sh
 ```
 
@@ -128,13 +128,13 @@ After bootstrap, complete Alfred setup:
 
 Your workflows and preferences are stored in `alfred/Alfred.alfredpreferences/`.
 
-### Cursor
+### VS Code
 
 Settings, keybindings, and snippets are symlinked automatically:
 
-- `~/Library/Application Support/Cursor/User/settings.json`
-- `~/Library/Application Support/Cursor/User/keybindings.json`
-- `~/Library/Application Support/Cursor/User/snippets/`
+- `~/Library/Application Support/Code/User/settings.json`
+- `~/Library/Application Support/Code/User/keybindings.json`
+- `~/Library/Application Support/Code/User/snippets/`
 
 ## Features
 
@@ -266,7 +266,7 @@ cd ~/projects/dotfiles && stow -R -t ~ zsh
 - **Shell aliases**: Edit `zsh/.zsh_custom_aliases`
 - **Shell functions**: Edit `zsh/.zsh_custom_functions`
 - **Prompt theme**: Run `p10k configure` or edit `zsh/.p10k.zsh`
-- **Cursor settings**: Edit `cursor/settings.json`
+- **VS Code settings**: Edit `vscode/settings.json`
 - **macOS prefs**: Edit scripts in `macos/`
 
 ## Managing Dependencies
@@ -274,8 +274,8 @@ cd ~/projects/dotfiles && stow -R -t ~ zsh
 The `Brewfile` contains all Homebrew dependencies:
 
 - CLI tools (bat, eza, fd, fnm, fzf, etc.)
-- Applications (1Password, Alfred, Cursor, Docker, etc.)
-- VS Code/Cursor extensions
+- Applications (1Password, Alfred, VS Code, Docker, etc.)
+- VS Code extensions
 
 To update the Brewfile after installing new packages:
 

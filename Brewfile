@@ -30,12 +30,12 @@ cask "rectangle"
 cask "zoom"
 
 # Apps - Development
-cask "cursor"
 cask "datagrip"
 cask "docker-desktop"
 cask "figma"
 cask "insomnia"
 cask "ngrok"
+cask "visual-studio-code"
 
 # Apps - AI
 cask "chatgpt"
