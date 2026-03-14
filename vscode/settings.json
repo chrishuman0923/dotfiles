@@ -37,6 +37,7 @@
     "typescriptreact",
     "vue"
   ],
+  "color-highlight.markerType": "dot-before",
   "cSpell.ignorePaths": [
     ".git/objects",
     ".vscode-insiders",
@@ -46,8 +47,6 @@
     "vscode-extension"
   ],
   "cSpell.ignoreRegExpList": ["\\w+&apos;\\w+"],
-  "chatgpt.commentCodeLensEnabled": false,
-  "color-highlight.markerType": "dot-before",
   "debug.console.fontFamily": "Anonymous Pro, monospace",
   "debug.console.fontSize": 16,
   "diffEditor.hideUnchangedRegions.enabled": true,
@@ -58,6 +57,7 @@
   "editor.fontFamily": "Anonymous Pro, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
+  "editor.fontWeight": "normal",
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
   "editor.inlineSuggest.enabled": true,
@@ -111,7 +111,7 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.ignoreRebaseWarning": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
   "markdown.preview.fontFamily": "Anonymous Pro, monospace",
   "markdown.preview.fontSize": 16,
@@ -131,10 +131,6 @@
     "sortJSONValuesReverse": false
   },
   "tailwindCSS.emmetCompletions": true,
-  "tailwindCSS.includeLanguages": {
-    "html": "html",
-    "javascript": "javascript"
-  },
   "terminal.integrated.confirmOnExit": "always",
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.env.osx": {
@@ -152,17 +148,14 @@
       "text": "TODO:"
     }
   ],
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "update.showReleaseNotes": false,
   "vsicons.dontShowNewVersionMessage": true,
   "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": false,
   "workbench.editor.openPositioning": "last",
   "workbench.iconTheme": "vscode-icons",
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 16,
-  "workbench.tree.renderIndentGuides": "always",
-  "claudeCode.preferredLocation": "panel",
-  "workbench.editor.enablePreview": false,
-  "editor.fontWeight": "normal"
+  "workbench.tree.renderIndentGuides": "always"
 }
