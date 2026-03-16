@@ -155,6 +155,8 @@
   "workbench.editor.limit.enabled": false,
   "workbench.editor.openPositioning": "last",
   "workbench.iconTheme": "vscode-icons",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 16,
   "workbench.tree.renderIndentGuides": "always"
