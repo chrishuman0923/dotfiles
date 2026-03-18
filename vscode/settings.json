@@ -37,6 +37,7 @@
     "typescriptreact",
     "vue"
   ],
+  "chat.mcp.gallery.enabled": true,
   "color-highlight.markerType": "dot-before",
   "cSpell.ignorePaths": [
     ".git/objects",
