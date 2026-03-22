@@ -37,7 +37,8 @@
     "typescriptreact",
     "vue"
   ],
-  "chat.mcp.gallery.enabled": true,
+  "chatgpt.commentCodeLensEnabled": false,
+  "claudeCode.preferredLocation": "panel",
   "color-highlight.markerType": "dot-before",
   "cSpell.ignorePaths": [
     ".git/objects",
@@ -48,11 +49,15 @@
     "vscode-extension"
   ],
   "cSpell.ignoreRegExpList": ["\\w+&apos;\\w+"],
+  "cursor.composer.usageSummaryDisplay": "always",
+  "cursor.cpp.disabledLanguages": ["plaintext"],
+  "cursor.general.enableShadowWorkspace": true,
   "debug.console.fontFamily": "Anonymous Pro, monospace",
   "debug.console.fontSize": 16,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.accessibilitySupport": "off",
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": true,
   "editor.fontFamily": "Anonymous Pro, monospace",
@@ -61,7 +66,9 @@
   "editor.fontWeight": "normal",
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
+  "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.showToolbar": "always",
   "editor.lineHeight": 0,
   "editor.linkedEditing": true,
   "editor.minimap.autohide": "none",
@@ -70,9 +77,11 @@
   "editor.minimap.size": "fill",
   "editor.mouseWheelZoom": true,
   "editor.quickSuggestions": {
-    "strings": "off"
+    "comments": "off",
+    "other": "on",
+    "strings": "on"
   },
-  "editor.snippetSuggestions": "top",
+  "editor.snippetSuggestions": "none",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "emmet.includeLanguages": {
@@ -102,6 +111,15 @@
   "extensions.ignoreRecommendations": true,
   "files.autoSave": "off",
   "files.enableTrash": false,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/vscode-extension": true
+  },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "fontshortcuts.defaultFontSize": 16,
@@ -112,12 +130,20 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.ignoreRebaseWarning": true,
-  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
   "markdown.preview.fontFamily": "Anonymous Pro, monospace",
   "markdown.preview.fontSize": 16,
   "reactSnippets.settings.importReactOnTop": false,
   "redhat.telemetry.enabled": false,
+  "search.exclude": {
+    "**/.DS_Store": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/vscode-extension": true
+  },
   "security.workspace.trust.untrustedFiles": "open",
   "sortJSON.contextMenu": {
     "sortJSON": false,
@@ -132,6 +158,10 @@
     "sortJSONValuesReverse": false
   },
   "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript"
+  },
   "terminal.integrated.confirmOnExit": "always",
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.env.osx": {
@@ -143,15 +173,12 @@
   "terminal.integrated.scrollback": 10000,
   "todohighlight.isEnable": true,
   "todohighlight.keywords": [
-    {
-      "backgroundColor": "#225da1",
-      "color": "white",
-      "text": "TODO:"
-    }
+    { "backgroundColor": "#225da1", "color": "white", "text": "TODO:" }
   ],
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "update.showReleaseNotes": false,
   "vsicons.dontShowNewVersionMessage": true,
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "One Dark Pro Darker",
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": false,
   "workbench.editor.openPositioning": "last",

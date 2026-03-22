@@ -7,54 +7,43 @@ brew "eza"
 brew "fd"
 brew "fnm"
 brew "fzf"
-brew "git"
+brew "gemini-cli"
 brew "git-delta"
+brew "git"
 brew "lazygit"
 brew "stow"
 brew "tree"
+brew "webp"
 brew "woff2"
 brew "xpdf"
 brew "zoxide"
 
-# Other
-brew "gemini-cli"
-brew "webp"
-
-# Apps - Productivity
-cask "1password"
+# Apps
 cask "1password-cli"
+cask "1password"
 cask "alfred"
-cask "logi-options+"
-cask "nordvpn"
-cask "rectangle"
-cask "zoom"
-
-# Apps - Development
+cask "chatgpt"
+cask "claude-code"
+cask "claude"
+cask "codex"
+cask "codexbar"
+cask "cursor"
 cask "datagrip"
 cask "docker-desktop"
 cask "figma"
-cask "insomnia"
-cask "ngrok"
-cask "visual-studio-code"
-
-# Apps - AI
-cask "chatgpt"
-cask "claude"
-cask "claude-code"
-cask "codex"
-cask "codexbar"
-cask "granola"
-cask "kiro-cli"
-
-# Apps - Browsers
 cask "google-chrome"
-
-# Apps - Media
+cask "granola"
+cask "insomnia"
+cask "kiro-cli"
+cask "logi-options+"
+cask "ngrok"
+cask "nordvpn"
+cask "rectangle"
 cask "vlc"
+cask "zoom"
 
-# VS Code Extensions
+# Extensions
 vscode "amazonwebservices.codewhisperer-for-command-line-companion"
-vscode "anthropic.claude-code"
 vscode "bierner.markdown-checkbox"
 vscode "bradlc.vscode-tailwindcss"
 vscode "christian-kohler.npm-intellisense"
@@ -76,7 +65,6 @@ vscode "mhutchie.git-graph"
 vscode "mikestead.dotenv"
 vscode "mylesmurphy.prettify-ts"
 vscode "naumovs.color-highlight"
-vscode "openai.chatgpt"
 vscode "pflannery.vscode-versionlens"
 vscode "redhat.vscode-yaml"
 vscode "richie5um2.vscode-sort-json"

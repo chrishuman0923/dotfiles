@@ -121,7 +121,7 @@ run_script_nonfatal "$DOTFILES_DIR/macos/spotlight.sh"
 # Configure apps
 echo "🔧 Configuring apps..."
 run_script_nonfatal "$DOTFILES_DIR/alfred/setup.sh"
-run_script_nonfatal "$DOTFILES_DIR/vscode/setup.sh"
+run_script_nonfatal "$DOTFILES_DIR/cursor/setup.sh"
 
 echo ""
 echo "✅ Bootstrap complete!"

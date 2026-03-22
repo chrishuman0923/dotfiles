@@ -21,7 +21,7 @@ dotfiles/
 │   └── .npmrc
 ├── ssh/                    # SSH configuration
 │   └── .ssh/config
-├── vscode/                 # VS Code settings
+├── cursor/                 # Cursor IDE settings
 │   ├── settings.json
 │   ├── keybindings.json
 │   ├── snippets/
@@ -57,13 +57,13 @@ git clone https://github.com/chrishuman0923/dotfiles.git ~/projects/dotfiles && 
 The bootstrap script will:
 
 - Install Homebrew (if needed)
-- Install all dependencies from Brewfile (CLI tools, apps, VS Code extensions)
+- Install all dependencies from Brewfile (CLI tools, apps, Cursor extensions)
 - Install custom fonts (Anonymous Pro)
 - Create symlinks for all dotfiles via stow
 - Set up Node.js (latest LTS) via fnm
 - Enable corepack for pnpm/yarn
 - Configure macOS settings (Dock, Finder, keyboard, screenshots, Spotlight)
-- Configure apps (VS Code, Alfred)
+- Configure apps (Cursor, Alfred)
 
 ### Manual Installation
 
@@ -93,7 +93,7 @@ corepack enable
 ./macos/keyboard.sh
 ./macos/screenshots.sh
 ./macos/spotlight.sh
-./vscode/setup.sh
+./cursor/setup.sh
 ./alfred/setup.sh
 ```
 
@@ -128,13 +128,13 @@ After bootstrap, complete Alfred setup:
 
 Your workflows and preferences are stored in `alfred/Alfred.alfredpreferences/`.
 
-### VS Code
+### Cursor
 
 Settings, keybindings, and snippets are symlinked automatically:
 
-- `~/Library/Application Support/Code/User/settings.json`
-- `~/Library/Application Support/Code/User/keybindings.json`
-- `~/Library/Application Support/Code/User/snippets/`
+- `~/Library/Application Support/Cursor/User/settings.json`
+- `~/Library/Application Support/Cursor/User/keybindings.json`
+- `~/Library/Application Support/Cursor/User/snippets/`
 
 ## Features
 
@@ -266,7 +266,7 @@ cd ~/projects/dotfiles && stow -R -t ~ zsh
 - **Shell aliases**: Edit `zsh/.zsh_custom_aliases`
 - **Shell functions**: Edit `zsh/.zsh_custom_functions`
 - **Prompt theme**: Run `p10k configure` or edit `zsh/.p10k.zsh`
-- **VS Code settings**: Edit `vscode/settings.json`
+- **Cursor settings**: Edit `cursor/settings.json`
 - **macOS prefs**: Edit scripts in `macos/`
 
 ## Managing Dependencies
@@ -274,8 +274,8 @@ cd ~/projects/dotfiles && stow -R -t ~ zsh
 The `Brewfile` contains all Homebrew dependencies:
 
 - CLI tools (bat, eza, fd, fnm, fzf, etc.)
-- Applications (1Password, Alfred, VS Code, Docker, etc.)
-- VS Code extensions
+- Applications (1Password, Alfred, Cursor, Docker, etc.)
+- Cursor extensions
 
 To update the Brewfile after installing new packages:
 
