@@ -43,3 +43,7 @@ alias lg="lazygit"
 # AWS
 alias aws-unset='assume --unset'
 alias aws-creds='aws configure export-credentials --format env'
+
+# Claude Code
+alias clglg="claude-glg"
+alias clbf="claude-bf"

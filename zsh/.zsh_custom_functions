@@ -48,6 +48,16 @@ ngrokbf() {
   ngrok http --url=stable-firefly-nominally.ngrok-free.app $1
 }
 
+## Launch Claude as work account (GLG)
+ claude-glg() {
+   CLAUDE_CONFIG_DIR="$HOME/.claude-glg" command claude "$@"
+ }
+
+ ## Launch Claude as personal account
+ claude-bf() {
+   CLAUDE_CONFIG_DIR="$HOME/.claude-bf" command claude "$@"
+ }
+
 # ----------------------
 # Project version management hook
 # Auto-switches Node version (fnm) and prepares corepack package manager
