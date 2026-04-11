@@ -21,6 +21,9 @@ dotfiles/
 │   └── .npmrc
 ├── ssh/                    # SSH configuration
 │   └── .ssh/config
+├── claude/                 # Claude AI configuration (symlink → private repo)
+│   ├── skills/             # Custom Claude Code skills
+│   └── setup.sh            # Syncs skills to Claude config directories
 ├── cursor/                 # Cursor IDE settings
 │   ├── settings.json
 │   ├── keybindings.json
@@ -64,6 +67,7 @@ The bootstrap script will:
 - Enable corepack for pnpm/yarn
 - Configure macOS settings (Dock, Finder, keyboard, screenshots, Spotlight)
 - Configure apps (Cursor, Alfred)
+- Clone [dotfiles-private](https://github.com/chrishuman0923/dotfiles-private) and link Claude AI configuration (requires SSH auth)
 
 ### Manual Installation
 
@@ -127,6 +131,21 @@ After bootstrap, complete Alfred setup:
 3. **Sync**: Set folder to `~/Alfred.alfredpreferences` in Preferences → Advanced → Syncing
 
 Your workflows and preferences are stored in `alfred/Alfred.alfredpreferences/`.
+
+### Claude Code
+
+The `claude/` directory is a symlink to a separate private repository ([dotfiles-private](https://github.com/chrishuman0923/dotfiles-private)). It contains custom Claude Code skills and configuration that are synced to all active Claude config directories (`~/.claude`, `~/.claude-bf`, `~/.claude-glg`).
+
+This directory is **not checked into this repository**. The bootstrap script will clone the private repo and create the symlink automatically after GitHub SSH authentication is established. If you're forking this repo, you'll need to supply your own Claude configuration or remove the Claude setup step from `bootstrap.sh`.
+
+To manually set up after bootstrap (if SSH wasn't ready during initial run):
+
+```bash
+git clone git@github.com:chrishuman0923/dotfiles-private.git ~/projects/dotfiles-private
+rm -rf ~/projects/dotfiles/claude
+ln -s ~/projects/dotfiles-private/claude ~/projects/dotfiles/claude
+~/projects/dotfiles/claude/setup.sh
+```
 
 ### Cursor
 

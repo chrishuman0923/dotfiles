@@ -37,8 +37,6 @@
     "typescriptreact",
     "vue"
   ],
-  "chatgpt.commentCodeLensEnabled": false,
-  "claudeCode.preferredLocation": "panel",
   "color-highlight.markerType": "dot-before",
   "cSpell.ignorePaths": [
     ".git/objects",
@@ -51,7 +49,6 @@
   "cSpell.ignoreRegExpList": ["\\w+&apos;\\w+"],
   "cursor.composer.usageSummaryDisplay": "always",
   "cursor.cpp.disabledLanguages": ["plaintext"],
-  "cursor.general.enableShadowWorkspace": true,
   "debug.console.fontFamily": "Anonymous Pro, monospace",
   "debug.console.fontSize": 16,
   "diffEditor.hideUnchangedRegions.enabled": true,
@@ -183,7 +180,7 @@
   "workbench.editor.limit.enabled": false,
   "workbench.editor.openPositioning": "last",
   "workbench.iconTheme": "vscode-icons",
-  "workbench.startupEditor": "none",
+  "workbench.startupEditor": "welcomePage",
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 16,
   "workbench.tree.renderIndentGuides": "always"

@@ -123,6 +123,21 @@ echo "🔧 Configuring apps..."
 run_script_nonfatal "$DOTFILES_DIR/alfred/setup.sh"
 run_script_nonfatal "$DOTFILES_DIR/cursor/setup.sh"
 
+# Clone private dotfiles and symlink claude/ directory (optional — fails silently for forks)
+DOTFILES_PRIVATE_DIR="$HOME/projects/dotfiles-private"
+if [[ ! -d "$DOTFILES_PRIVATE_DIR" ]]; then
+  if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
+    git clone git@github.com:chrishuman0923/dotfiles-private.git "$DOTFILES_PRIVATE_DIR" 2>/dev/null
+  fi
+fi
+
+if [[ -d "$DOTFILES_PRIVATE_DIR/claude" ]]; then
+  echo "🔗 Linking private claude/ directory..."
+  rm -rf "$DOTFILES_DIR/claude"
+  ln -sf "$DOTFILES_PRIVATE_DIR/claude" "$DOTFILES_DIR/claude"
+  run_script_nonfatal "$DOTFILES_DIR/claude/setup.sh"
+fi
+
 echo ""
 echo "✅ Bootstrap complete!"
 echo ""

@@ -12,3 +12,6 @@
 *.swp
 *.swo
 .idea/
+
+# AI configuration (managed in dotfiles-private repo, symlinked in by bootstrap)
+claude
