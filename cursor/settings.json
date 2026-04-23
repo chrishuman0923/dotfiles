@@ -1,42 +1,4 @@
 {
-  "[dockercompose]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "[github-actions-workflow]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "auto-close-tag.activationOnLanguage": [
-    "html",
-    "javascriptreact",
-    "typescriptreact"
-  ],
-  "auto-close-tag.excludedTags": [
-    "area",
-    "base",
-    "br",
-    "col",
-    "command",
-    "embed",
-    "hr",
-    "img",
-    "input",
-    "keygen",
-    "link",
-    "meta",
-    "param",
-    "source",
-    "track",
-    "wbr"
-  ],
-  "auto-rename-tag.activationOnLanguage": [
-    "html",
-    "javascriptreact",
-    "typescriptreact",
-    "vue"
-  ],
   "color-highlight.markerType": "dot-before",
   "cSpell.ignorePaths": [
     ".git/objects",
@@ -131,7 +93,6 @@
   "json.schemaDownload.enable": true,
   "markdown.preview.fontFamily": "Anonymous Pro, monospace",
   "markdown.preview.fontSize": 16,
-  "reactSnippets.settings.importReactOnTop": false,
   "redhat.telemetry.enabled": false,
   "search.exclude": {
     "**/.DS_Store": true,
@@ -142,18 +103,6 @@
     "**/vscode-extension": true
   },
   "security.workspace.trust.untrustedFiles": "open",
-  "sortJSON.contextMenu": {
-    "sortJSON": false,
-    "sortJSONAlphaNum": false,
-    "sortJSONAlphaNumReverse": false,
-    "sortJSONKeyLength": false,
-    "sortJSONKeyLengthReverse": false,
-    "sortJSONReverse": false,
-    "sortJSONType": false,
-    "sortJSONTypeReverse": false,
-    "sortJSONValues": false,
-    "sortJSONValuesReverse": false
-  },
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.includeLanguages": {
     "html": "html",
