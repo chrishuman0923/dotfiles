@@ -15,3 +15,5 @@
 
 # AI configuration (managed in dotfiles-private repo, symlinked in by bootstrap)
 claude
+
+node_modules/

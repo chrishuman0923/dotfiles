@@ -1,0 +1,3 @@
+{
+  "*": ["oxfmt --config .oxfmtrc.json"]
+}

@@ -53,12 +53,7 @@
   "emmet.showAbbreviationSuggestions": false,
   "emmet.triggerExpansionOnTab": true,
   "errorLens.excludeBySource": ["ts(17002)"],
-  "errorLens.excludePatterns": [
-    ".git/objects",
-    ".vscode",
-    "node_modules",
-    "vscode-extension"
-  ],
+  "errorLens.excludePatterns": [".git/objects", ".vscode", "node_modules", "vscode-extension"],
   "errorLens.fontFamily": "Anonymous Pro",
   "errorLens.fontSize": "16px",
   "errorLens.messageBackgroundMode": "message",
@@ -118,9 +113,7 @@
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.scrollback": 10000,
   "todohighlight.isEnable": true,
-  "todohighlight.keywords": [
-    { "backgroundColor": "#225da1", "color": "white", "text": "TODO:" }
-  ],
+  "todohighlight.keywords": [{ "backgroundColor": "#225da1", "color": "white", "text": "TODO:" }],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "update.showReleaseNotes": false,
   "vsicons.dontShowNewVersionMessage": true,
