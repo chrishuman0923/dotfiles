@@ -1,5 +1,5 @@
 {
-  "name": "bitwise-forge-vault",
+  "name": "dotfiles",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -9,10 +9,10 @@
     "prepare": "node .husky/install.js"
   },
   "dependencies": {},
-  "packageManager": "pnpm@10.33.0",
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "oxfmt": "^0.43.0"
-  }
+    "oxfmt": "^0.47.0"
+  },
+  "packageManager": "pnpm@10.33.3"
 }
